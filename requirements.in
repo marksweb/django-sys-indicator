@@ -3,5 +3,3 @@ django~=3.2
 pip-tools
 pre-commit
 pytest-cov
-pytest-django
-pytest-xdist
