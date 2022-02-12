@@ -1,0 +1,27 @@
+
+<style type="text/css">
+
+    body:before {
+        display: block;
+        text-align: center;
+        font-family: "Arial", sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        color: white;
+        border-top: 1px solid {{ border_color }};
+        border-bottom: 1px solid {{ border_color }};
+        outline: 1px solid {{ color }};
+        position: fixed;
+        width: 300px;
+        z-index: 100000;
+        padding: 5px 0;
+        transform: rotate(-45deg);
+        top: 22px;
+        left: -116px;
+        box-shadow: 0 0 10px #888;
+        text-shadow: 0 0 5px #333;
+        line-height: 1.2;
+        content: '{{ label }}';
+        background-color: {{ color }};
+    }
+</style>
