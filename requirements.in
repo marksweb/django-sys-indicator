@@ -1,7 +1,5 @@
-bumpversion
-django~=3.2
+bump2version
 pip-tools
 pre-commit
 pytest-cov
 pytest-django
-pytest-xdist
