@@ -1,7 +1,21 @@
-from django.test import override_settings
 from django.urls import reverse
 
+import pytest
+
 from .views import home
+
+CUSTOM_LABEL = 'Indicator test'
+
+
+@pytest.fixture()
+def enable_indicator(settings):
+    settings.SYSTEM_INDICATOR_ENABLED = True
+
+
+@pytest.fixture()
+def enable_indicator_with_custom_label(settings):
+    settings.SYSTEM_INDICATOR_ENABLED = True
+    settings.SYSTEM_INDICATOR_LABEL = CUSTOM_LABEL
 
 
 def test_home_view(client):
@@ -12,18 +26,15 @@ def test_home_view(client):
     assert response.status_code == 200
 
 
-def test_with_indicator_enabled(client, settings):
-    with override_settings(SYSTEM_INDICATOR_ENABLED=True):
-        url = reverse('home')
-        request = client.get(url)
-        response = home(request)
-        assert response.status_code == 200
+def test_with_indicator_enabled(enable_indicator, client):
+    url = reverse('home')
+    request = client.get(url)
+    response = home(request)
+    assert response.status_code == 200
 
 
-def test_with_indicator_text(client, settings):
-    label = 'Indicator test'
-    with override_settings(SYSTEM_INDICATOR_ENABLED=True, SYSTEM_INDICATOR_LABEL=label):
-        url = reverse('home')
-        request = client.get(url)
-        response = home(request)
-        assert response.status_code == 200
+def test_with_indicator_text(enable_indicator_with_custom_label, client):
+    url = reverse('home')
+    request = client.get(url)
+    response = home(request)
+    assert response.status_code == 200
