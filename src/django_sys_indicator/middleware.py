@@ -1,5 +1,4 @@
 from django.template.loader import render_to_string
-from django.utils.encoding import force_str
 
 from .conf import (
     SYSTEM_INDICATOR_COLOR, SYSTEM_INDICATOR_COLORS, SYSTEM_INDICATOR_ENABLED, SYSTEM_INDICATOR_EXCLUSIONS,
@@ -45,7 +44,7 @@ class SystemIndicatorMiddleware:
                 return response
 
         # extract the HTML content from the response
-        html = force_str(response.content)
+        html = response.content.decode(response.charset)
         if html.find('</head>') < 0:
             # no closing </head>...assuming this isn't a standard page response
             return response
@@ -70,8 +69,8 @@ class SystemIndicatorMiddleware:
         html = html.replace('</head>', system_indicator_html, 1)
 
         # update the response with the modified HTML content
-        response.content = force_str(html)
-        if response.get('Content-Length', None):
-            response['Content-Length'] = len(response.content)
+        response.content = html
+        if "Content-Length" in response:
+            response["Content-Length"] = len(response.content)
 
         return response

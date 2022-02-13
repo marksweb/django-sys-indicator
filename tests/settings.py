@@ -15,6 +15,14 @@ DATABASES = {
     },
 }
 
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "src" / "django_sys_indicator" / "templates"],
+        "OPTIONS": {"context_processors": []},
+    },
+]
+
 ALLOWED_HOSTS: list[str] = ['*']
 
 MIDDLEWARE: list[str] = ['django_sys_indicator.middleware.SystemIndicatorMiddleware']
@@ -28,3 +36,7 @@ if django.VERSION < (4, 0):
     USE_L10N = True
 
 USE_TZ = True
+
+SYSTEM_INDICATOR_ENABLED = False
+SYSTEM_INDICATOR_LABEL = 'testing'
+SYSTEM_INDICATOR_COLOR = 'blue'

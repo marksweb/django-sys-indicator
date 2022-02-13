@@ -7,6 +7,7 @@
 
 A visual indicator of what environment/system you're using in django.
 
+![system indicator examples](https://django-sys-indicator.s3.eu-west-2.amazonaws.com/screenshots/django-sys-indicator.jpg "Django system indicator")
 
 To install:
 
@@ -40,3 +41,7 @@ SYSTEM_INDICATOR_EXCLUSIONS = [
     re.compile('^/[^/]+/admin/.*$'),
 ]
 ```
+
+Example of a localhost indicator in admin;
+
+![system indicator admin example](https://django-sys-indicator.s3.eu-west-2.amazonaws.com/screenshots/indicator-admin-header.png "Django system indicator")
