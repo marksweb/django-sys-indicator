@@ -27,7 +27,6 @@ ALLOWED_HOSTS: list[str] = ['*']
 
 MIDDLEWARE: list[str] = ['django_sys_indicator.middleware.SystemIndicatorMiddleware']
 
-ROOT_URLCONF = "tests.urls"
 LANGUAGE_CODE = "en"
 TIME_ZONE = "UTC"
 USE_I18N = False
@@ -36,7 +35,3 @@ if django.VERSION < (4, 0):
     USE_L10N = True
 
 USE_TZ = True
-
-SYSTEM_INDICATOR_ENABLED = False
-SYSTEM_INDICATOR_LABEL = 'testing'
-SYSTEM_INDICATOR_COLOR = 'blue'

@@ -1,4 +1,8 @@
-from django.conf import settings
+from __future__ import annotations
+
+from typing import Sequence
+
+from django.conf import settings as dj_settings
 
 DEFAULT_COLOURS = {
     # Format here is colour, border colour
@@ -9,8 +13,29 @@ DEFAULT_COLOURS = {
     'orange': ('#ff7700', '#ffb57d'),
 }
 
-SYSTEM_INDICATOR_ENABLED = getattr(settings, 'SYSTEM_INDICATOR_ENABLED', False)
-SYSTEM_INDICATOR_LABEL = getattr(settings, 'SYSTEM_INDICATOR_LABEL', 'localhost')
-SYSTEM_INDICATOR_COLORS = getattr(settings, 'SYSTEM_INDICATOR_COLORS', DEFAULT_COLOURS)
-SYSTEM_INDICATOR_COLOR = getattr(settings, 'SYSTEM_INDICATOR_COLOR', 'green')
-SYSTEM_INDICATOR_EXCLUSIONS = getattr(settings, 'SYSTEM_INDICATOR_EXCLUSIONS', [])
+
+class Settings:
+    """Lazy settings"""
+
+    @property
+    def SYSTEM_INDICATOR_ENABLED(self) -> bool:  # noqa: N802
+        return getattr(dj_settings, "SYSTEM_INDICATOR_ENABLED", False)
+
+    @property
+    def SYSTEM_INDICATOR_COLOR(self) -> str:  # noqa: N802
+        return getattr(dj_settings, "SYSTEM_INDICATOR_COLOR", 'green')
+
+    @property
+    def SYSTEM_INDICATOR_LABEL(self) -> str:  # noqa: N802
+        return getattr(dj_settings, "SYSTEM_INDICATOR_LABEL", 'localhost')
+
+    @property
+    def SYSTEM_INDICATOR_COLORS(self) -> str:  # noqa: N802
+        return getattr(dj_settings, "SYSTEM_INDICATOR_COLORS", DEFAULT_COLOURS)
+
+    @property
+    def SYSTEM_INDICATOR_EXCLUSIONS(self) -> Sequence[str]:  # noqa: N802
+        return getattr(dj_settings, "SYSTEM_INDICATOR_EXCLUSIONS", [])
+
+
+settings = Settings()
