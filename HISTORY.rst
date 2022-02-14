@@ -2,7 +2,8 @@
 History
 =======
 
-unreleased
-----------
+1.0.0 (2012-02-14)
+------------------
 
 * Initial release.
+
