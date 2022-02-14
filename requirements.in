@@ -1,4 +1,3 @@
-bump2version
 pip-tools
 pre-commit
 pytest-cov

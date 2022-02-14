@@ -10,8 +10,6 @@
 
 attrs==21.4.0
     # via pytest
-bump2version==1.0.1
-    # via -r requirements.in
 cfgv==3.3.1
     # via pre-commit
 click==8.0.3
