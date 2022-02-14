@@ -30,7 +30,7 @@ class Settings:
         return getattr(dj_settings, "SYSTEM_INDICATOR_LABEL", 'localhost')
 
     @property
-    def SYSTEM_INDICATOR_COLORS(self) -> str:  # noqa: N802
+    def SYSTEM_INDICATOR_COLORS(self) -> dict:  # noqa: N802
         return getattr(dj_settings, "SYSTEM_INDICATOR_COLORS", DEFAULT_COLOURS)
 
     @property

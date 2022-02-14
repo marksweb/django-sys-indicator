@@ -56,3 +56,27 @@ class SystemIndicatorMiddlewareTests(SimpleTestCase):
         assert settings.SYSTEM_INDICATOR_LABEL in content
         assert border_color in content
         assert color in content
+
+    @override_settings(SYSTEM_INDICATOR_ENABLED=True, SYSTEM_INDICATOR_COLOR='black')
+    def test_invalid_colour(self):
+        response = self.middleware(self.request)
+        content = response.content.decode(response.charset)
+        # Invalid colour results in red as a default
+        color, border_color = settings.SYSTEM_INDICATOR_COLORS['red']
+
+        assert settings.SYSTEM_INDICATOR_LABEL in content
+        assert border_color in content
+        assert color in content
+
+    @override_settings(SYSTEM_INDICATOR_ENABLED=True, SYSTEM_INDICATOR_LABEL=123)
+    def test_int_label(self):
+        response = self.middleware(self.request)
+        content = response.content.decode(response.charset)
+        color, border_color = settings.SYSTEM_INDICATOR_COLORS[
+            settings.SYSTEM_INDICATOR_COLOR
+        ]
+
+        # cast to string here because of the assert against the string content
+        assert str(settings.SYSTEM_INDICATOR_LABEL) in content
+        assert border_color in content
+        assert color in content
