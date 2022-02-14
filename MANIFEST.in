@@ -7,3 +7,4 @@ exclude tox.ini
 include HISTORY.rst
 include LICENSE
 include README.md
+recursive-include src/django_sys_indicator * *.py *.html
