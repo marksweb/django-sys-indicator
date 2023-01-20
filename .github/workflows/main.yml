@@ -68,7 +68,8 @@ jobs:
 
       - name: Combine coverage
         run: |
-          python -m coverage combine
+          python -m coverage debug data
+          python -m coverage combine --debug=pathmap
           python -m coverage html --skip-covered --skip-empty
           python -m coverage report
 
