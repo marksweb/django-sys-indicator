@@ -77,3 +77,15 @@ if __name__ == "__main__":
         check=True,
         capture_output=True,
     )
+    subprocess.run(
+        [
+            "python3.11",
+            *common_args,
+            "-P",
+            "Django>=4.2,<4.3",
+            "-o",
+            "py311-django42.txt",
+        ],
+        check=True,
+        capture_output=True,
+    )
