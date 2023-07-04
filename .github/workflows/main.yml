@@ -67,7 +67,6 @@ jobs:
 
       - name: Combine coverage
         run: |
-          python -m coverage combine
           python -m coverage html --skip-covered --skip-empty
           python -m coverage report
 
