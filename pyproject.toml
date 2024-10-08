@@ -1,6 +1,57 @@
 [build-system]
-requires = ["setuptools >= 40.6.0", "wheel"]
 build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools",
+]
+
+[project]
+name = "django-sys-indicator"
+version = "2.1.0"
+description = "A system/environment indicator for django."
+readme = "README.rst"
+keywords = [
+  "Django",
+]
+authors = [
+  { name = "Mark Walker", email = "theshow@gmail.com" },
+]
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.0",
+  "Framework :: Django :: 4.1",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5.0",
+  "Framework :: Django :: 5.1",
+  "Framework :: IPython",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "django>=3.2",
+]
+urls = { Changelog = "https://github.com/marksweb/django-sys-indicator/HISTORY.rst", Repository = "https://github.com/marksweb/django-sys-indicator" }
+
+[tool.isort]
+add_imports = [
+  "from __future__ import annotations",
+]
+force_single_line = true
+profile = "black"
+
+[tool.pyproject-fmt]
+max_supported_python = "3.13"
 
 [tool.pytest.ini_options]
 addopts = """\
@@ -9,11 +60,39 @@ addopts = """\
     --ds=tests.settings
     """
 django_find_project = false
+xfail_strict = true
 
-[tool.ruff.per-file-ignores]
-"__init__.py" = [
-  "F401"  # unused-import
+[tool.coverage.run]
+branch = true
+parallel = true
+source = [
+  "django_sys_indicator",
+  "tests",
 ]
 
-[tool.ruff.isort]
-combine-as-imports = true
+[tool.coverage.paths]
+source = [
+  "src",
+  ".tox/**/site-packages",
+]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.mypy]
+enable_error_code = [
+  "ignore-without-code",
+  "redundant-expr",
+  "truthy-bool",
+]
+mypy_path = "src/"
+namespace_packages = false
+strict = true
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+allow_untyped_defs = true
+
+[tool.rstcheck]
+report_level = "ERROR"
