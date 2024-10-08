@@ -1,7 +1,10 @@
 from __future__ import annotations
 
-from django.http import HttpRequest, HttpResponse
-from django.test import RequestFactory, SimpleTestCase, override_settings
+from django.http import HttpRequest
+from django.http import HttpResponse
+from django.test import RequestFactory
+from django.test import SimpleTestCase
+from django.test import override_settings
 
 from django_sys_indicator.conf import settings
 from django_sys_indicator.middleware import SystemIndicatorMiddleware
@@ -45,7 +48,7 @@ class SystemIndicatorMiddlewareTests(SimpleTestCase):
         assert border_color in content
         assert color in content
 
-    @override_settings(SYSTEM_INDICATOR_ENABLED=True, SYSTEM_INDICATOR_COLOR='orange')
+    @override_settings(SYSTEM_INDICATOR_ENABLED=True, SYSTEM_INDICATOR_COLOR="orange")
     def test_enabled_orange(self):
         response = self.middleware(self.request)
         content = response.content.decode(response.charset)
@@ -57,12 +60,12 @@ class SystemIndicatorMiddlewareTests(SimpleTestCase):
         assert border_color in content
         assert color in content
 
-    @override_settings(SYSTEM_INDICATOR_ENABLED=True, SYSTEM_INDICATOR_COLOR='black')
+    @override_settings(SYSTEM_INDICATOR_ENABLED=True, SYSTEM_INDICATOR_COLOR="black")
     def test_invalid_colour(self):
         response = self.middleware(self.request)
         content = response.content.decode(response.charset)
         # Invalid colour results in red as a default
-        color, border_color = settings.SYSTEM_INDICATOR_COLORS['red']
+        color, border_color = settings.SYSTEM_INDICATOR_COLORS["red"]
 
         assert settings.SYSTEM_INDICATOR_LABEL in content
         assert border_color in content

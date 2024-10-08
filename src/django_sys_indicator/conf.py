@@ -6,11 +6,11 @@ from django.conf import settings as dj_settings
 
 DEFAULT_COLOURS = {
     # Format here is colour, border colour
-    'red': ('#c50000', '#daa'),
-    'blue': ('#006fc4', '#aad'),
-    'green': ('#009e00', '#ada'),
-    'purple': ('#800080', '#dad'),
-    'orange': ('#ff7700', '#ffb57d'),
+    "red": ("#c50000", "#daa"),
+    "blue": ("#006fc4", "#aad"),
+    "green": ("#009e00", "#ada"),
+    "purple": ("#800080", "#dad"),
+    "orange": ("#ff7700", "#ffb57d"),
 }
 
 
@@ -23,11 +23,11 @@ class Settings:
 
     @property
     def SYSTEM_INDICATOR_COLOR(self) -> str:  # noqa: N802
-        return getattr(dj_settings, "SYSTEM_INDICATOR_COLOR", 'green')
+        return getattr(dj_settings, "SYSTEM_INDICATOR_COLOR", "green")
 
     @property
     def SYSTEM_INDICATOR_LABEL(self) -> str:  # noqa: N802
-        return getattr(dj_settings, "SYSTEM_INDICATOR_LABEL", 'localhost')
+        return getattr(dj_settings, "SYSTEM_INDICATOR_LABEL", "localhost")
 
     @property
     def SYSTEM_INDICATOR_COLORS(self) -> dict:  # noqa: N802
