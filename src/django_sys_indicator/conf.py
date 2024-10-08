@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import Dict
 from typing import Sequence
 
 from django.conf import settings as dj_settings
@@ -30,7 +31,7 @@ class Settings:
         return getattr(dj_settings, "SYSTEM_INDICATOR_LABEL", "localhost")
 
     @property
-    def SYSTEM_INDICATOR_COLORS(self) -> dict:  # noqa: N802
+    def SYSTEM_INDICATOR_COLORS(self) -> dict[str, tuple[str, str]]:  # noqa: N802
         return getattr(dj_settings, "SYSTEM_INDICATOR_COLORS", DEFAULT_COLOURS)
 
     @property
