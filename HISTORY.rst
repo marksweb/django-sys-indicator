@@ -17,4 +17,3 @@ History
 ------------------
 
 * Initial release.
-

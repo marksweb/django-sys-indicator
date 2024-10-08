@@ -23,9 +23,9 @@ TEMPLATES = [
     },
 ]
 
-ALLOWED_HOSTS: list[str] = ['*']
+ALLOWED_HOSTS: list[str] = ["*"]
 
-MIDDLEWARE: list[str] = ['django_sys_indicator.middleware.SystemIndicatorMiddleware']
+MIDDLEWARE: list[str] = ["django_sys_indicator.middleware.SystemIndicatorMiddleware"]
 
 LANGUAGE_CODE = "en"
 TIME_ZONE = "UTC"
