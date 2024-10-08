@@ -2,6 +2,12 @@
 History
 =======
 
+2.2.0 (2024-10-08)
+------------------
+
+* Add suporrt for django 5.0 and 5.1
+* Add support for python 3.13
+
 2.1.0 (2023-06-30)
 ------------------
 
