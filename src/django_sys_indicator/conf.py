@@ -34,9 +34,5 @@ class Settings:
     def SYSTEM_INDICATOR_COLORS(self) -> dict[str, tuple[str, str]]:  # noqa: N802
         return getattr(dj_settings, "SYSTEM_INDICATOR_COLORS", DEFAULT_COLOURS)
 
-    @property
-    def SYSTEM_INDICATOR_EXCLUSIONS(self) -> Sequence[str]:  # noqa: N802
-        return getattr(dj_settings, "SYSTEM_INDICATOR_EXCLUSIONS", [])
-
 
 settings = Settings()
