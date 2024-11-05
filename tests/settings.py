@@ -15,6 +15,8 @@ DATABASES = {
     },
 }
 
+INSTALLED_APPS = ["django_sys_indicator"]
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -35,3 +37,7 @@ if django.VERSION < (4, 0):
     USE_L10N = True
 
 USE_TZ = True
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.MD5PasswordHasher",
+]

@@ -23,6 +23,14 @@ class SystemIndicatorMiddlewareTests(SimpleTestCase):
         self.middleware = SystemIndicatorMiddleware(get_response)
 
     @override_settings(SYSTEM_INDICATOR_ENABLED=True)
+    def test_content_length(self):
+        self.response["Content-Length"] = 6553
+
+        response = self.middleware(self.request)
+        content = response.content.decode(response.charset)
+        assert settings.SYSTEM_INDICATOR_LABEL in content
+
+    @override_settings(SYSTEM_INDICATOR_ENABLED=True)
     def test_invalid_content(self):
         self.response = HttpResponse("<html><body></body></html>")
 
