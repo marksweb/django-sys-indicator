@@ -23,7 +23,7 @@ repos:
   - id: end-of-file-fixer
   - id: trailing-whitespace
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: v2.21.1
+  rev: v2.25.1
   hooks:
   - id: pyproject-fmt
 - repo: https://github.com/tox-dev/tox-ini-fmt
@@ -42,12 +42,12 @@ repos:
   - id: pyupgrade
     args: [--py38-plus]
 - repo: https://github.com/adamchainz/django-upgrade
-  rev: 1.30.0
+  rev: 1.31.1
   hooks:
   - id: django-upgrade
     args: [--target-version, '3.2']
 - repo: https://github.com/psf/black-pre-commit-mirror
-  rev: 26.3.1
+  rev: 26.5.1
   hooks:
   - id: black
 - repo: https://github.com/adamchainz/blacken-docs
@@ -62,7 +62,7 @@ repos:
     - id: isort
       name: isort (python)
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.20.2
+  rev: v2.1.0
   hooks:
   - id: mypy
     additional_dependencies:
