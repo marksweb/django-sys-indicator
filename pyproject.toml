@@ -77,12 +77,12 @@ ini_options.xfail_strict = true
 ini_options.django_find_project = false
 
 [tool.coverage]
-run.branch = true
-run.parallel = true
 run.source = [
   "django_sys_indicator",
   "tests",
 ]
+run.branch = true
+run.parallel = true
 paths.source = [
   "src",
   ".tox/**/site-packages",
